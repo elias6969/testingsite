@@ -6,6 +6,7 @@ import { WindowProvider } from './context/WindowContext';
 import { SoundProvider } from './context/SoundContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { OSThemeProvider } from './context/OSThemeContext';
 import ShutdownScreen from './components/ShutdownScreen';
 import ToastQuote from './components/ToastQuote';
 import './styles/App.css';
@@ -23,22 +24,24 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <SoundProvider>
-          <WindowProvider>
-            <div className="app-container">
-              {isShuttingDown ? (
-                <ShutdownScreen />
-              ) : (
-                <>
-                  <Desktop />
-                  <WindowManager />
-                  <Taskbar onShutdown={handleShutdown} />
-                  <ToastQuote />
-                </>
-              )}
-            </div>
-          </WindowProvider>
-        </SoundProvider>
+        <OSThemeProvider>
+          <SoundProvider>
+            <WindowProvider>
+              <div className="app-container">
+                {isShuttingDown ? (
+                  <ShutdownScreen />
+                ) : (
+                  <>
+                    <Desktop />
+                    <WindowManager />
+                    <Taskbar onShutdown={handleShutdown} />
+                    <ToastQuote />
+                  </>
+                )}
+              </div>
+            </WindowProvider>
+          </SoundProvider>
+        </OSThemeProvider>
       </LanguageProvider>
     </ThemeProvider>
   );

@@ -6,6 +6,8 @@ import { useWindowContext } from '../context/WindowContext';
 import { useSoundContext } from '../context/SoundContext';
 import { useThemeContext } from '../context/ThemeContext';
 import { useLanguageContext } from '../context/LanguageContext';
+import { useOSTheme } from '../context/OSThemeContext';
+import OSThemeSelector from './OSThemeSelector';
 import '../styles/Taskbar.css';
 
 interface TaskbarProps {
@@ -18,6 +20,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ onShutdown }) => {
   const { isMuted, toggleMute, playSound } = useSoundContext();
   const { isDarkMode, toggleTheme } = useThemeContext();
   const { language, setLanguage, t } = useLanguageContext();
+  const { themeConfig } = useOSTheme();
 
   const handleStartClick = () => {
     setIsStartMenuOpen(!isStartMenuOpen);
@@ -44,7 +47,10 @@ const Taskbar: React.FC<TaskbarProps> = ({ onShutdown }) => {
   };
 
   return (
-    <div className={`taskbar ${isDarkMode ? 'dark' : ''}`}>
+    <div 
+      className={`taskbar ${isDarkMode ? 'dark' : ''}`}
+      style={{ background: themeConfig.colors.taskbar }}
+    >
       <div className="taskbar-left">
         <button 
           className={`start-button ${isStartMenuOpen ? 'active' : ''}`} 
@@ -72,6 +78,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ onShutdown }) => {
       </div>
       
       <div className="taskbar-right">
+        <OSThemeSelector />
         <button className="taskbar-icon-button" onClick={toggleLanguage}>
           <Globe size={16} />
           <span className="language-indicator">{language.toUpperCase()}</span>

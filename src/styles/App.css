@@ -17,6 +17,17 @@
   padding: 0;
 }
 
+/* CSS Variables for OS themes */
+:root {
+  --os-primary: #0c52cd;
+  --os-secondary: #245edb;
+  --os-accent: #3c8b27;
+  --os-window: #ece9d8;
+  --os-text: #000000;
+  --os-font-system: 'MS Sans Serif', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --os-font-mono: 'Courier New', monospace;
+}
+
 @font-face {
   font-family: 'MS Sans Serif';
   src: url('https://unpkg.com/@fontsource/ms-sans-serif/files/ms-sans-serif-400.woff2') format('woff2');
@@ -25,7 +36,7 @@
 }
 
 body {
-  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--os-font-system);
   font-size: 12px;
   overflow: hidden;
   -webkit-font-smoothing: none;
@@ -42,14 +53,14 @@ body {
 
 /* Common button styles */
 button {
-  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--os-font-system);
   cursor: pointer;
 }
 
 /* XP-like button styles */
 .xp-button {
   padding: 3px 8px;
-  border: 1px solid #003c74;
+  border: 1px solid var(--os-primary);
   background: linear-gradient(180deg, #fff 0%, #ecebe5 50%, #e1dfd7 51%, #edeceb 100%);
   border-radius: 3px;
   box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.7) inset, -1px -1px 0px rgba(0, 0, 0, 0.1) inset;

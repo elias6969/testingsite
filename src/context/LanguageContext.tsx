@@ -62,6 +62,10 @@ const translations: Translations = {
     en: "Shut Down",
     sv: "Stäng Av"
   },
+  osTheme: {
+    en: "OS Theme",
+    sv: "OS-tema"
+  },
   language: {
     en: "Language",
     sv: "Språk"

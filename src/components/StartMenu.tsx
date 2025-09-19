@@ -7,6 +7,7 @@ import { useWindowContext } from '../context/WindowContext';
 import { useSoundContext } from '../context/SoundContext';
 import { useThemeContext } from '../context/ThemeContext';
 import { useLanguageContext } from '../context/LanguageContext';
+import { useOSTheme } from '../context/OSThemeContext';
 import '../styles/StartMenu.css';
 
 interface StartMenuProps {
@@ -19,6 +20,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ onClose, onShutdown }) => {
   const { playSound } = useSoundContext();
   const { isDarkMode } = useThemeContext();
   const { t } = useLanguageContext();
+  const { themeConfig } = useOSTheme();
 
   const handleItemClick = (id: 'home' | 'about' | 'skills' | 'projects' | 'computer' | 'snake') => {
     playSound('click');
@@ -40,7 +42,13 @@ const StartMenu: React.FC<StartMenuProps> = ({ onClose, onShutdown }) => {
   };
 
   return (
-    <div className={`start-menu ${isDarkMode ? 'dark' : ''}`}>
+    <div 
+      className={`start-menu ${isDarkMode ? 'dark' : ''}`}
+      style={{ 
+        borderColor: themeConfig.colors.primary,
+        fontFamily: themeConfig.fonts.system 
+      }}
+    >
       <div className="start-menu-header">
         <div className="start-menu-user">
           <User size={48} className="user-icon" />

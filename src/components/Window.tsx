@@ -5,6 +5,7 @@ import { useWindowContext, WindowType } from '../context/WindowContext';
 import { useSoundContext } from '../context/SoundContext';
 import { useThemeContext } from '../context/ThemeContext';
 import { useLanguageContext } from '../context/LanguageContext';
+import { useOSTheme } from '../context/OSThemeContext';
 import '../styles/Window.css';
 
 interface WindowProps {
@@ -24,6 +25,7 @@ const Window: React.FC<WindowProps> = ({ id, title, icon, children }) => {
   const { playSound } = useSoundContext();
   const { isDarkMode } = useThemeContext();
   const { t } = useLanguageContext();
+  const { themeConfig } = useOSTheme();
   
   const window = windows.find(w => w.id === id);
   const windowRef = useRef<HTMLDivElement>(null);
@@ -107,12 +109,18 @@ const Window: React.FC<WindowProps> = ({ id, title, icon, children }) => {
     <div
       ref={windowRef}
       className={`window ${window.isMaximized ? 'maximized' : ''} ${isDarkMode ? 'dark' : ''}`}
-      style={windowStyle}
+      style={{
+        ...windowStyle,
+        backgroundColor: themeConfig.colors.window,
+        color: themeConfig.colors.text,
+        fontFamily: themeConfig.fonts.system
+      }}
       onMouseDown={handleMouseDown}
     >
       <div 
         ref={headerRef}
         className="window-header"
+        style={{ background: `linear-gradient(180deg, ${themeConfig.colors.primary} 0%, ${themeConfig.colors.secondary} 100%)` }}
         onMouseDown={handleHeaderMouseDown}
       >
         <div className="window-title">

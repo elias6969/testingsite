@@ -2,11 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import DesktopIcon from './DesktopIcon';
 import { useWindowContext, WindowType } from '../context/WindowContext';
 import { useThemeContext } from '../context/ThemeContext';
+import { useOSTheme } from '../context/OSThemeContext';
 import '../styles/Desktop.css';
 
 const Desktop: React.FC = () => {
   const { openWindow, focusWindow, windows } = useWindowContext();
   const { isDarkMode } = useThemeContext();
+  const { themeConfig } = useOSTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -86,7 +88,7 @@ const Desktop: React.FC = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
+        ctx.fillStyle = isDarkMode ? '#ffffff33' : themeConfig.colors.primary + '33';
         ctx.fill();
       });
 
@@ -123,7 +125,12 @@ const Desktop: React.FC = () => {
   ];
 
   return (
-    <div className={`desktop ${isDarkMode ? 'dark' : ''}`}>
+    <div 
+      className={`desktop ${isDarkMode ? 'dark' : ''}`}
+      style={{
+        backgroundImage: `url(${isDarkMode ? themeConfig.darkWallpaper : themeConfig.wallpaper})`
+      }}
+    >
       <canvas ref={canvasRef} className="particle-canvas" />
       <div className="desktop-icons">
         {desktopIcons.map((icon) => (

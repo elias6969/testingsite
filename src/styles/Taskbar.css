@@ -4,14 +4,13 @@
   left: 0;
   width: 100%;
   height: 40px;
-  background: linear-gradient(180deg, #245edb 0%, #2c62e3 3%, #2c62e3 10%, #245edb 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2px;
   z-index: 9999;
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
-  border-top: 1px solid #0842c4;
+  border-top: 1px solid var(--os-primary);
 }
 
 /* Dark mode styles */
@@ -33,9 +32,9 @@
   padding: 0 8px 0 4px;
   display: flex;
   align-items: center;
-  border: 1px solid #0842c4;
+  border: 1px solid var(--os-primary);
   border-radius: 3px;
-  background: linear-gradient(180deg, #3c8b27 0%, #26b01c 50%, #1b8b0e 51%, #279619 100%);
+  background: linear-gradient(180deg, var(--os-accent) 0%, var(--os-accent) 50%, var(--os-accent) 51%, var(--os-accent) 100%);
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -55,7 +54,7 @@
 }
 
 .start-logo {
-  background-color: #3c8b27;
+  background-color: var(--os-accent);
   padding: 0 4px;
   margin-right: 5px;
   border-radius: 2px;

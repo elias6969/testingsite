@@ -1,0 +1,100 @@
+.os-theme-selector {
+  position: relative;
+}
+
+.theme-selector-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.theme-selector-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.theme-dropdown {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  min-width: 150px;
+  z-index: 10001;
+  margin-bottom: 5px;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333;
+}
+
+.theme-option:hover {
+  background-color: #f0f0f0;
+}
+
+.theme-option.active {
+  background-color: var(--os-primary, #0c52cd);
+  color: white;
+}
+
+.theme-option:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.theme-option:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+/* Dark mode adjustments */
+.dark .theme-dropdown {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.dark .theme-option {
+  color: #fff;
+}
+
+.dark .theme-option:hover {
+  background-color: #3a3a3a;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .theme-dropdown {
+    right: -50px;
+    min-width: 120px;
+  }
+  
+  .theme-option {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
