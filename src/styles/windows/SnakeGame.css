@@ -1,0 +1,114 @@
+.snake-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.score {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0c52cd;
+}
+
+.dark .score {
+  color: #fff;
+}
+
+.pause-button {
+  padding: 5px 15px;
+  background: linear-gradient(180deg, #fff 0%, #ecebe5 50%, #e1dfd7 51%, #edeceb 100%);
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.dark .pause-button {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 50%, #1a1a1a 51%, #1f1f1f 100%);
+  border-color: #000;
+  color: #fff;
+}
+
+.game-board {
+  position: relative;
+  background-color: #000;
+  border: 2px solid #0c52cd;
+  border-radius: 4px;
+}
+
+.dark .game-board {
+  border-color: #2a2a2a;
+}
+
+.snake-segment {
+  position: absolute;
+  background-color: #0c52cd;
+  border-radius: 2px;
+}
+
+.dark .snake-segment {
+  background-color: #4a90e2;
+}
+
+.food {
+  position: absolute;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 2px solid #0c52cd;
+}
+
+.dark .game-over {
+  background-color: rgba(26, 26, 26, 0.9);
+  border-color: #2a2a2a;
+  color: #fff;
+}
+
+.game-over button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: linear-gradient(180deg, #fff 0%, #ecebe5 50%, #e1dfd7 51%, #edeceb 100%);
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.dark .game-over button {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 50%, #1a1a1a 51%, #1f1f1f 100%);
+  border-color: #000;
+  color: #fff;
+}
+
+.game-instructions {
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.dark .game-instructions {
+  color: #aaa;
+}
+
+.game-instructions p {
+  margin: 5px 0;
+  font-size: 12px;
+}

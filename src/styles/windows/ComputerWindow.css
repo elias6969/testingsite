@@ -1,0 +1,58 @@
+.computer-window {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal {
+  flex: 1;
+  background-color: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+
+.terminal-line {
+  line-height: 1.4;
+  white-space: pre-wrap;
+  margin-bottom: 2px;
+}
+
+.terminal-input {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.input-prompt {
+  margin-right: 5px;
+}
+
+.terminal input {
+  background-color: transparent;
+  border: none;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  flex: 1;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    font-size: 12px;
+  }
+  
+  .terminal input {
+    font-size: 12px;
+  }
+}

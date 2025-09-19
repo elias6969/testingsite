@@ -1,0 +1,129 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.app-container.dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Base styles for the entire application */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('https://unpkg.com/@fontsource/ms-sans-serif/files/ms-sans-serif-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  overflow: hidden;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+/* Disable text selection for a more authentic XP feel */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Common button styles */
+button {
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+/* XP-like button styles */
+.xp-button {
+  padding: 3px 8px;
+  border: 1px solid #003c74;
+  background: linear-gradient(180deg, #fff 0%, #ecebe5 50%, #e1dfd7 51%, #edeceb 100%);
+  border-radius: 3px;
+  box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.7) inset, -1px -1px 0px rgba(0, 0, 0, 0.1) inset;
+}
+
+.xp-button:hover {
+  background: linear-gradient(180deg, #f8f5f1 0%, #eae6df 50%, #e0ded7 51%, #f8f5f1 100%);
+}
+
+.xp-button:active {
+  background: linear-gradient(180deg, #cce9ff 0%, #9ed8ff 50%, #83cfff 51%, #b3e3ff 100%);
+  box-shadow: none;
+}
+
+/* Dark mode styles */
+.dark .xp-button {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 50%, #1a1a1a 51%, #1f1f1f 100%);
+  border-color: #000;
+  color: #fff;
+}
+
+.dark .xp-button:hover {
+  background: linear-gradient(180deg, #3a3a3a 0%, #2f2f2f 50%, #2a2a2a 51%, #2f2f2f 100%);
+}
+
+.dark .xp-button:active {
+  background: linear-gradient(180deg, #1a1a1a 0%, #151515 50%, #101010 51%, #151515 100%);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border: 1px solid #d1d1d1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dadada;
+  border: 1px solid #b4b4b4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c2c2c2;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+.dark ::-webkit-scrollbar-corner {
+  background: #1a1a1a;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}

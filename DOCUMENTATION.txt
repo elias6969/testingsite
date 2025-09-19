@@ -1,0 +1,164 @@
+# Windows XP Portfolio - Technical Documentation
+
+## 1. Project Overview
+This project is a Windows XP-themed portfolio website built using modern web technologies. It recreates the classic Windows XP desktop experience while showcasing professional information in an interactive way.
+
+## 2. Core Technologies
+- React 18.3.1 with TypeScript
+- Tailwind CSS for styling
+- Vite for development and building
+- Lucide React for icons
+- react-google-recaptcha for form protection
+
+## 3. Architecture
+
+### Component Structure
+```
+src/
+├── components/
+│   ├── Desktop.tsx         # Main desktop environment
+│   ├── DesktopIcon.tsx    # Individual desktop icons
+│   ├── Taskbar.tsx        # System taskbar
+│   ├── Window.tsx         # Base window component
+│   ├── WindowManager.tsx  # Window state management
+│   └── windows/           # Individual window components
+├── context/
+│   ├── LanguageContext.tsx  # Internationalization
+│   ├── SoundContext.tsx     # Sound effects
+│   ├── ThemeContext.tsx     # Theme management
+│   └── WindowContext.tsx    # Window state
+└── styles/                  # CSS modules
+```
+
+### Context Providers
+1. LanguageContext
+   - Handles language switching (EN/SV)
+   - Provides translation function `t(key)`
+   - Manages language state
+   - All text content is translatable
+
+2. ThemeContext
+   - Manages dark/light mode
+   - Provides theme switching functionality
+   - Affects all UI components
+
+3. SoundContext
+   - Controls system sound effects
+   - Handles mute state
+   - Provides sound playback function
+
+4. WindowContext
+   - Manages window states
+   - Handles window focus
+   - Controls window positioning
+   - Manages z-index ordering
+
+## 4. Internationalization System
+
+### Translation Structure
+- Uses a key-based translation system
+- Translations stored in LanguageContext
+- Supports English and Swedish
+- Easy to add new languages
+
+### Usage Example
+```typescript
+const { t } = useLanguageContext();
+<div>{t('welcomeMessage')}</div>
+```
+
+### Adding New Translations
+1. Add new key-value pairs to translations object in LanguageContext
+2. Use the translation key in components
+3. Both languages must be provided for each key
+
+## 5. Features
+
+### Window System
+- Draggable windows
+- Focus management
+- Z-index ordering
+- Minimize/maximize/close
+
+### Desktop Environment
+- Interactive icons
+- Start menu
+- Taskbar
+- System tray
+
+### Interactive Elements
+- Snake game
+- Terminal emulator
+- Contact form with reCAPTCHA
+- PDF viewer for CV
+
+## 6. State Management
+- Uses React Context for global state
+- Window positions and states
+- Language preferences
+- Theme settings
+- Sound settings
+
+## 7. Security Features
+- reCAPTCHA integration
+- Mock contact form
+- Secure external links
+- Environment variable protection
+
+## 8. Development Guidelines
+
+### Adding New Features
+1. Create component in appropriate directory
+2. Add translations to LanguageContext
+3. Update WindowContext if needed
+4. Add styles in styles directory
+5. Register in WindowManager if it's a window
+
+### Translation Guidelines
+1. Add all text as translation keys
+2. Provide both EN and SV translations
+3. Use the `t()` function for all text
+4. Keep translations organized by feature
+
+### Styling Guidelines
+1. Use Tailwind CSS classes
+2. Add custom styles in CSS modules
+3. Follow Windows XP design patterns
+4. Support both light and dark themes
+
+## 9. Environment Setup
+
+### Required Environment Variables
+```
+VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+```
+
+### Development Commands
+```bash
+npm install    # Install dependencies
+npm run dev    # Start development server
+npm run build  # Build for production
+npm run preview # Preview production build
+```
+
+## 10. Performance Considerations
+- Lazy loading for window contents
+- Optimized window rendering
+- Efficient state management
+- Sound preloading
+
+## 11. Browser Support
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Responsive design
+- Touch support for mobile
+
+## 12. Known Limitations
+- Contact form is mock-only
+- Some Windows XP features are simulated
+- Sound effects may be blocked by browsers
+
+## 13. Future Improvements
+- Additional language support
+- More interactive features
+- Enhanced accessibility
+- Additional themes

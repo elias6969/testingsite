@@ -1,0 +1,57 @@
+.toast-quote {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  display: flex;
+  align-items: flex-end;
+  z-index: 10000;
+  animation: slideIn 0.5s ease-out;
+}
+
+.toast-image {
+  width: 100px;
+  height: auto;
+}
+
+.quote-bubble {
+  background: white;
+  border: 2px solid #0c52cd;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-right: 10px;
+  position: relative;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 14px;
+  max-width: 200px;
+}
+
+.dark .quote-bubble {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+  color: white;
+}
+
+.quote-bubble:after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  bottom: 10px;
+  border-left: 10px solid #0c52cd;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.dark .quote-bubble:after {
+  border-left-color: #2a2a2a;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

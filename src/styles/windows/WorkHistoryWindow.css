@@ -1,0 +1,158 @@
+.work-history-window {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.work-header {
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.work-header h2 {
+  color: #0c52cd;
+  font-size: 18px;
+}
+
+.work-content {
+  padding: 15px;
+}
+
+.work-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.work-entry {
+  display: flex;
+  gap: 15px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.work-icon {
+  color: #0c52cd;
+  background-color: #e6f2ff;
+  padding: 10px;
+  border-radius: 50%;
+  height: fit-content;
+}
+
+.work-details {
+  flex: 1;
+}
+
+.work-details h3 {
+  color: #0c52cd;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.work-meta {
+  display: flex;
+  gap: 15px;
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.work-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.company {
+  font-weight: bold;
+}
+
+.tech-stack {
+  margin: 15px 0;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.tech-stack h4 {
+  color: #0c52cd;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.tech-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tech-category {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tech-category span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #0c52cd;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.tech-category ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tech-category li {
+  font-size: 12px;
+  color: #444;
+  padding: 3px 0 3px 20px;
+  position: relative;
+}
+
+.tech-category li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: #0c52cd;
+}
+
+.work-responsibilities {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #444;
+  font-size: 12px;
+}
+
+.work-responsibilities li {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .work-entry {
+    flex-direction: column;
+  }
+  
+  .work-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .tech-categories {
+    flex-direction: column;
+  }
+
+  .tech-category {
+    min-width: 100%;
+  }
+}
