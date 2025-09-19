@@ -43,7 +43,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ onClose, onShutdown }) => {
 
   return (
     <div 
-      className={`start-menu ${isDarkMode ? 'dark' : ''}`}
+      className={`start-menu start-menu-${themeConfig.layout.startMenuStyle} ${isDarkMode ? 'dark' : ''}`}
       style={{ 
         borderColor: themeConfig.colors.primary,
         fontFamily: themeConfig.fonts.system 

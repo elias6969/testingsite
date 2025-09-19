@@ -1,24 +1,30 @@
+/* Base Start Menu */
 .start-menu {
   position: absolute;
-  bottom: 30px;
-  left: 0;
-  width: 350px;
   background-color: #fff;
-  border: 1px solid #0842c4;
-  border-radius: 0 8px 8px 0;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 10000;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
 }
 
-.start-menu.dark {
+/* Windows XP Start Menu */
+.start-menu-xp {
+  bottom: 40px;
+  left: 0;
+  width: 350px;
+  border: 1px solid #0842c4;
+  border-radius: 0 8px 8px 0;
+}
+
+.start-menu-xp.dark {
   background-color: #1a1a1a;
   border-color: #000;
 }
 
-.start-menu-header {
+.start-menu-xp .start-menu-header {
   height: 60px;
   background: linear-gradient(135deg, #0c52cd 0%, #1373de 100%);
   display: flex;
@@ -26,40 +32,40 @@
   padding: 10px;
 }
 
-.dark .start-menu-header {
+.start-menu-xp.dark .start-menu-header {
   background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
 }
 
-.start-menu-user {
+.start-menu-xp .start-menu-user {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.user-icon {
+.start-menu-xp .user-icon {
   padding: 4px;
   background-color: #fff;
   border-radius: 4px;
   color: #0c52cd;
 }
 
-.dark .user-icon {
+.start-menu-xp.dark .user-icon {
   background-color: #2a2a2a;
   color: #fff;
 }
 
-.user-name {
+.start-menu-xp .user-name {
   color: white;
   font-size: 16px;
   font-weight: bold;
 }
 
-.start-menu-content {
+.start-menu-xp .start-menu-content {
   display: flex;
   height: 400px;
 }
 
-.start-menu-left {
+.start-menu-xp .start-menu-left {
   flex: 2;
   padding: 5px;
   background-color: white;
@@ -68,11 +74,11 @@
   overflow-y: auto;
 }
 
-.dark .start-menu-left {
+.start-menu-xp.dark .start-menu-left {
   background-color: #1a1a1a;
 }
 
-.start-menu-right {
+.start-menu-xp .start-menu-right {
   flex: 1;
   background-color: #d3e5fa;
   border-left: 1px solid #a5cef7;
@@ -82,105 +88,267 @@
   padding: 10px 5px;
 }
 
-.dark .start-menu-right {
+.start-menu-xp.dark .start-menu-right {
   background-color: #2a2a2a;
   border-left-color: #000;
 }
 
+/* GNOME Start Menu (Arch/Debian) */
+.start-menu-gnome {
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.start-menu-gnome .start-menu-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.start-menu-gnome .start-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.start-menu-gnome .start-menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Unity Start Menu (Ubuntu) */
+.start-menu-unity {
+  top: 0;
+  left: 64px;
+  width: 400px;
+  height: 100vh;
+  background: rgba(44, 0, 30, 0.98);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(233, 84, 32, 0.3);
+}
+
+.start-menu-unity .start-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.start-menu-unity .start-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  margin: 4px 0;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.start-menu-unity .start-menu-item:hover {
+  background: rgba(233, 84, 32, 0.2);
+}
+
+/* macOS Dock Menu */
+.start-menu-dock {
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 15px;
+}
+
+.start-menu-dock .start-menu-content {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.start-menu-dock .start-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  color: #333;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 11px;
+  min-width: 60px;
+}
+
+.start-menu-dock .start-menu-item:hover {
+  transform: scale(1.1) translateY(-5px);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dark .start-menu-dock {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .start-menu-dock .start-menu-item {
+  color: #fff;
+}
+
+/* Common Start Menu Item Styles */
 .start-menu-item {
   display: flex;
   align-items: center;
-  padding: 5px 8px;
-  margin: 2px 0;
-  border-radius: 3px;
   cursor: pointer;
   background: none;
   border: none;
   text-align: left;
-  color: black;
   text-decoration: none;
   font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+/* XP Start Menu Items */
+.start-menu-xp .start-menu-item {
+  padding: 5px 8px;
+  margin: 2px 0;
+  border-radius: 3px;
+  color: black;
   font-size: 12px;
   gap: 8px;
   width: 100%;
 }
 
-.dark .start-menu-item {
+.start-menu-xp.dark .start-menu-item {
   color: #fff;
 }
 
-.start-menu-item:hover {
+.start-menu-xp .start-menu-item:hover {
   background-color: #d0e5ff;
   color: #0c52cd;
 }
 
-.dark .start-menu-item:hover {
+.start-menu-xp.dark .start-menu-item:hover {
   background-color: #3a3a3a;
   color: #fff;
 }
 
-.start-menu-item.shutdown {
+.start-menu-xp .start-menu-item.shutdown {
   margin-top: auto;
   color: #c40e0e;
 }
 
-.dark .start-menu-item.shutdown {
+.start-menu-xp.dark .start-menu-item.shutdown {
   color: #ff4444;
 }
 
-.start-menu-item.shutdown:hover {
+.start-menu-xp .start-menu-item.shutdown:hover {
   background-color: #ffd0d0;
 }
 
-.dark .start-menu-item.shutdown:hover {
+.start-menu-xp.dark .start-menu-item.shutdown:hover {
   background-color: #3a3a3a;
 }
 
-.start-menu-divider {
+.start-menu-xp .start-menu-divider {
   height: 1px;
   background-color: #e0e0e0;
   margin: 5px 0;
 }
 
-.dark .start-menu-divider {
+.start-menu-xp.dark .start-menu-divider {
   background-color: #2a2a2a;
 }
 
 /* Media queries for responsive design */
 @media (max-width: 768px) {
-  .start-menu {
+  .start-menu-xp {
     width: 300px;
   }
   
-  .start-menu-content {
+  .start-menu-xp .start-menu-content {
     height: 350px;
   }
   
-  .user-name {
+  .start-menu-xp .user-name {
     font-size: 14px;
+  }
+  
+  .start-menu-gnome {
+    width: 90vw;
+    height: 60vh;
+  }
+  
+  .start-menu-unity {
+    width: 80vw;
+    left: 56px;
+  }
+  
+  .start-menu-dock {
+    width: 90vw;
+    bottom: 60px;
+  }
+  
+  .start-menu-dock .start-menu-content {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
-  .start-menu {
+  .start-menu-xp {
     width: 100%;
     border-radius: 0;
   }
   
-  .start-menu-content {
+  .start-menu-xp .start-menu-content {
     flex-direction: column;
     height: auto;
     max-height: 70vh;
   }
   
-  .start-menu-right {
+  .start-menu-xp .start-menu-right {
     border-left: none;
     border-top: 1px solid #a5cef7;
     flex-direction: row;
     flex-wrap: wrap;
   }
   
-  .dark .start-menu-right {
+  .start-menu-xp.dark .start-menu-right {
     border-top-color: #000;
+  }
+  
+  .start-menu-gnome,
+  .start-menu-unity,
+  .start-menu-dock {
+    width: 100vw;
+    left: 0;
+    transform: none;
   }
 }

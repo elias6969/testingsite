@@ -1,6 +1,4 @@
 .desktop-icon {
-  width: 80px;
-  height: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,17 +6,24 @@
   cursor: pointer;
   position: relative;
   z-index: 2;
+  transition: all 0.2s ease;
 }
 
-.desktop-icon:hover {
+/* XP Style Icons */
+.desktop-xp .desktop-icon {
+  width: 80px;
+  height: 90px;
+}
+
+.desktop-xp .desktop-icon:hover {
   background-color: rgba(180, 202, 255, 0.3);
 }
 
-.desktop-icon:active {
+.desktop-xp .desktop-icon:active {
   background-color: rgba(36, 116, 241, 0.2);
 }
 
-.icon-container {
+.desktop-xp .icon-container {
   width: 48px;
   height: 48px;
   display: flex;
@@ -30,7 +35,7 @@
   border-radius: 4px;
 }
 
-.icon-label {
+.desktop-xp .icon-label {
   text-align: center;
   color: white;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8), 
@@ -44,19 +49,121 @@
   white-space: nowrap;
 }
 
+/* Linux Style Icons */
+.desktop-linux .desktop-icon {
+  width: 72px;
+  height: 84px;
+  border-radius: 8px;
+}
+
+.desktop-linux .desktop-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.desktop-linux .icon-container {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--os-primary), var(--os-secondary));
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.desktop-linux .icon-label {
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-size: 11px;
+  font-weight: 500;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* macOS Style Icons */
+.desktop-macos .desktop-icon {
+  width: 88px;
+  height: 100px;
+  border-radius: 12px;
+}
+
+.desktop-macos .desktop-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.desktop-macos .icon-container {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--os-primary), var(--os-secondary));
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.desktop-macos .icon-label {
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Media queries for responsive design */
 @media (max-width: 768px) {
-  .desktop-icon {
+  .desktop-xp .desktop-icon {
     width: 70px;
     height: 80px;
   }
   
-  .icon-container {
+  .desktop-xp .icon-container {
     width: 40px;
     height: 40px;
   }
   
-  .icon-label {
+  .desktop-xp .icon-label {
+    font-size: 11px;
+  }
+  
+  .desktop-linux .desktop-icon {
+    width: 64px;
+    height: 76px;
+  }
+  
+  .desktop-linux .icon-container {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .desktop-linux .icon-label {
+    font-size: 10px;
+  }
+  
+  .desktop-macos .desktop-icon {
+    width: 76px;
+    height: 88px;
+  }
+  
+  .desktop-macos .icon-container {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .desktop-macos .icon-label {
     font-size: 11px;
   }
 }

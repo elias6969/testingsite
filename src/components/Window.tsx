@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { XIcon as Icon } from 'lucide-react';
+import { XIcon as Icon, Minus, Square, Maximize2 } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { useWindowContext, WindowType } from '../context/WindowContext';
 import { useSoundContext } from '../context/SoundContext';
@@ -95,6 +95,54 @@ const Window: React.FC<WindowProps> = ({ id, title, icon, children }) => {
     closeWindow(id);
   };
 
+  const renderWindowControls = () => {
+    switch (themeConfig.layout.windowStyle) {
+      case 'macos':
+        return (
+          <div className="window-controls macos-controls">
+            <button className="window-control macos-close" onClick={handleClose}>
+              <div className="macos-control-dot"></div>
+            </button>
+            <button className="window-control macos-minimize">
+              <div className="macos-control-dot"></div>
+            </button>
+            <button className="window-control macos-maximize">
+              <div className="macos-control-dot"></div>
+            </button>
+          </div>
+        );
+      
+      case 'gnome':
+        return (
+          <div className="window-controls gnome-controls">
+            <button className="window-control gnome-minimize">
+              <Minus size={12} />
+            </button>
+            <button className="window-control gnome-maximize">
+              <Square size={12} />
+            </button>
+            <button className="window-control gnome-close" onClick={handleClose}>
+              <Icon size={12} />
+            </button>
+          </div>
+        );
+      
+      default: // XP style
+        return (
+          <div className="window-controls xp-controls">
+            <button className="window-control minimize">
+              <Minus size={12} />
+            </button>
+            <button className="window-control maximize">
+              <Maximize2 size={12} />
+            </button>
+            <button className="window-control close" onClick={handleClose}>
+              <Icon size={12} />
+            </button>
+          </div>
+        );
+    }
+  };
   const windowStyle = window.isMaximized
     ? { zIndex: window.zIndex }
     : {
@@ -108,7 +156,7 @@ const Window: React.FC<WindowProps> = ({ id, title, icon, children }) => {
   return (
     <div
       ref={windowRef}
-      className={`window ${window.isMaximized ? 'maximized' : ''} ${isDarkMode ? 'dark' : ''}`}
+      className={`window window-${themeConfig.layout.windowStyle} ${window.isMaximized ? 'maximized' : ''} ${isDarkMode ? 'dark' : ''}`}
       style={{
         ...windowStyle,
         backgroundColor: themeConfig.colors.window,
@@ -120,18 +168,14 @@ const Window: React.FC<WindowProps> = ({ id, title, icon, children }) => {
       <div 
         ref={headerRef}
         className="window-header"
-        style={{ background: `linear-gradient(180deg, ${themeConfig.colors.primary} 0%, ${themeConfig.colors.secondary} 100%)` }}
+        style={{ background: themeConfig.colors.windowHeader }}
         onMouseDown={handleHeaderMouseDown}
       >
         <div className="window-title">
           <LucideIcon size={16} />
           <span>{t(id)}</span>
         </div>
-        <div className="window-controls">
-          <button className="window-control close" onClick={handleClose}>
-            <Icon size={12} />
-          </button>
-        </div>
+        {renderWindowControls()}
       </div>
       <div className="window-content">
         {children}

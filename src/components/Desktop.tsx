@@ -126,9 +126,13 @@ const Desktop: React.FC = () => {
 
   return (
     <div 
-      className={`desktop ${isDarkMode ? 'dark' : ''}`}
+      className={`desktop desktop-${themeConfig.layout.iconStyle} ${isDarkMode ? 'dark' : ''}`}
       style={{
-        backgroundImage: `url(${isDarkMode ? themeConfig.darkWallpaper : themeConfig.wallpaper})`
+        backgroundImage: `url(${isDarkMode ? themeConfig.darkWallpaper : themeConfig.wallpaper})`,
+        [themeConfig.layout.taskbarPosition === 'left' ? 'paddingLeft' : 
+         themeConfig.layout.taskbarPosition === 'right' ? 'paddingRight' :
+         themeConfig.layout.taskbarPosition === 'top' ? 'paddingTop' : 'paddingBottom']: 
+         themeConfig.layout.taskbarHeight
       }}
     >
       <canvas ref={canvasRef} className="particle-canvas" />

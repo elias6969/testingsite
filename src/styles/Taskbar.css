@@ -1,22 +1,22 @@
+/* Base Taskbar Styles */
 .taskbar {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+/* Windows XP Taskbar */
+.taskbar-windows-xp {
   bottom: 0;
   left: 0;
   width: 100%;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 2px;
-  z-index: 9999;
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
   border-top: 1px solid var(--os-primary);
-}
-
-/* Dark mode styles */
-.taskbar.dark {
-  background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 3%, #2a2a2a 10%, #1a1a1a 100%);
-  border-top-color: #000;
 }
 
 .taskbar-left {
@@ -26,7 +26,7 @@
   height: 100%;
 }
 
-.start-button {
+.xp-start {
   height: 36px;
   margin: 0 2px;
   padding: 0 8px 0 4px;
@@ -34,23 +34,14 @@
   align-items: center;
   border: 1px solid var(--os-primary);
   border-radius: 3px;
-  background: linear-gradient(180deg, var(--os-accent) 0%, var(--os-accent) 50%, var(--os-accent) 51%, var(--os-accent) 100%);
+  background: var(--os-start-button);
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 
-.dark .start-button {
-  background: linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 50%, #1a1a1a 51%, #1f1f1f 100%);
-  border-color: #000;
-}
-
-.start-button:hover, .start-button.active {
+.xp-start:hover, .xp-start.active {
   background: linear-gradient(180deg, #47ab2e 0%, #2bd820 50%, #1da810 51%, #2db81d 100%);
-}
-
-.dark .start-button:hover, .dark .start-button.active {
-  background: linear-gradient(180deg, #3a3a3a 0%, #2f2f2f 50%, #2a2a2a 51%, #2f2f2f 100%);
 }
 
 .start-logo {
@@ -58,10 +49,6 @@
   padding: 0 4px;
   margin-right: 5px;
   border-radius: 2px;
-}
-
-.dark .start-logo {
-  background-color: #1a1a1a;
 }
 
 .taskbar-items {
@@ -73,23 +60,13 @@
   padding: 0 4px;
 }
 
-.taskbar-items::-webkit-scrollbar {
-  height: 0;
-  display: none;
-}
-
-.taskbar-right {
+.xp-tray {
   display: flex;
   align-items: center;
   height: 100%;
   background: linear-gradient(180deg, #245edb 0%, #2c62e3 10%, #245edb 100%);
   padding: 0 5px;
   border-left: 1px solid #0842c4;
-}
-
-.dark .taskbar-right {
-  background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 10%, #1a1a1a 100%);
-  border-left-color: #000;
 }
 
 .taskbar-time {
@@ -115,38 +92,390 @@
   gap: 4px;
 }
 
-.language-indicator {
-  font-size: 12px;
-  font-weight: bold;
-}
-
 .taskbar-icon-button:hover {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
 }
 
-.dark .taskbar-icon-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.language-indicator {
+  font-size: 12px;
+  font-weight: bold;
 }
 
+/* Ubuntu Taskbar (Unity-style) */
+.taskbar-ubuntu {
+  left: 0;
+  top: 0;
+  width: 64px;
+  height: 100vh;
+  flex-direction: column;
+  background: rgba(44, 0, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(233, 84, 32, 0.3);
+}
+
+.ubuntu-launcher {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.ubuntu-dash-button {
+  width: 48px;
+  height: 48px;
+  background: var(--os-primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ubuntu-dash-button:hover {
+  background: var(--os-secondary);
+}
+
+.ubuntu-dock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.ubuntu-dock-item {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ubuntu-dock-item.active::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: var(--os-primary);
+  border-radius: 2px;
+}
+
+.ubuntu-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  margin-top: auto;
+}
+
+.ubuntu-control {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.ubuntu-control:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* macOS Menu Bar */
+.taskbar-macos {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+}
+
+.macos-menu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 28px;
+  padding: 0 16px;
+}
+
+.macos-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.macos-apple-menu {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.macos-apple-menu:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.macos-app-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.macos-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.macos-menu-item {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.macos-menu-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.macos-time {
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+}
+
+.macos-dock {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.macos-dock-item {
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.macos-dock-item:hover {
+  transform: scale(1.1);
+}
+
+.macos-dock-item.active {
+  background: var(--os-primary);
+}
+
+.dock-icon-macos {
+  width: 32px;
+  height: 32px;
+  background: var(--os-primary);
+  border-radius: 8px;
+}
+
+/* GNOME Panel (Arch/Debian) */
+.taskbar-arch, .taskbar-debian {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: var(--os-taskbar);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-direction: column;
+}
+
+.gnome-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+}
+
+.gnome-left {
+  display: flex;
+  align-items: center;
+}
+
+.gnome-activities {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.gnome-activities:hover, .gnome-activities.active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gnome-center {
+  display: flex;
+  align-items: center;
+}
+
+.gnome-time {
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.gnome-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gnome-indicator {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.gnome-indicator:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gnome-dock {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.gnome-dock-item {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.gnome-dock-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.gnome-dock-item.active {
+  background: var(--os-primary);
+}
+
+.dock-icon, .dock-icon-gnome {
+  width: 32px;
+  height: 32px;
+  background: var(--os-primary);
+  border-radius: 6px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .taskbar {
+  .taskbar-windows-xp {
     height: 50px;
   }
   
-  .start-button {
-    height: 40px;
-    padding: 0 12px 0 6px;
-    font-size: 14px;
+  .taskbar-ubuntu {
+    width: 56px;
   }
   
-  .taskbar-time {
-    font-size: 14px;
-    padding: 0 12px;
+  .ubuntu-dash-button, .ubuntu-dock-item {
+    width: 40px;
     height: 40px;
   }
   
-  .taskbar-icon-button {
-    padding: 6px 10px;
+  .macos-dock {
+    bottom: 5px;
+    padding: 6px;
   }
+  
+  .macos-dock-item {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .gnome-dock {
+    bottom: 10px;
+    padding: 8px;
+  }
+  
+  .gnome-dock-item {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Dark mode adjustments */
+.dark .macos-menu-bar {
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .macos-app-name,
+.dark .macos-time,
+.dark .macos-menu-item {
+  color: #fff;
+}
+
+.dark .macos-menu-item:hover,
+.dark .macos-apple-menu:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .macos-dock {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 0, 0, 0.2);
 }

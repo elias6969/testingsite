@@ -1,60 +1,60 @@
+/* Base Window Styles */
 .window {
   position: absolute;
   min-width: 250px;
   min-height: 150px;
-  background-color: #ece9d8;
-  border: 1px solid #0842c4;
-  border-radius: 8px 8px 0 0;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   resize: both;
-}
-
-.window.dark {
-  background-color: #1a1a1a;
-  border-color: #000;
+  transition: all 0.2s ease;
 }
 
 .window.maximized {
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  height: calc(100% - 30px) !important; /* Account for taskbar */
   border-radius: 0;
 }
 
-.window-header {
+/* Windows XP Style */
+.window-xp {
+  background-color: var(--os-window);
+  border: 1px solid var(--os-primary);
+  border-radius: 8px 8px 0 0;
+}
+
+.window-xp.maximized {
+  height: calc(100% - 40px) !important; /* Account for taskbar */
+}
+
+.window-xp .window-header {
   height: 30px;
-  background: linear-gradient(180deg, #0c52cd 0%, #0c52cd 10%, #1373de 100%);
+  background: var(--os-window-header);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 8px;
   cursor: move;
   user-select: none;
+  color: white;
 }
 
-.dark .window-header {
-  background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 10%, #1a1a1a 100%);
-}
-
-.window-title {
+.window-xp .window-title {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: white;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.window-controls {
+.xp-controls {
   display: flex;
   align-items: center;
 }
 
-.window-control {
+.xp-controls .window-control {
   width: 22px;
   height: 22px;
   margin-left: 4px;
@@ -66,46 +66,193 @@
   color: white;
 }
 
-.window-control.minimize {
+.xp-controls .minimize {
   background-color: #1373de;
 }
 
-.dark .window-control.minimize {
-  background-color: #2a2a2a;
-}
-
-.window-control.maximize {
+.xp-controls .maximize {
   background-color: #1373de;
 }
 
-.dark .window-control.maximize {
-  background-color: #2a2a2a;
-}
-
-.window-control.close {
+.xp-controls .close {
   background-color: #d03438;
 }
 
-.dark .window-control.close {
-  background-color: #8b2225;
-}
-
-.window-control:hover {
+.xp-controls .window-control:hover {
   filter: brightness(1.1);
 }
 
+/* GNOME Style (Arch/Debian) */
+.window-gnome {
+  background-color: var(--os-window);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.window-gnome.maximized {
+  height: calc(100% - 32px) !important; /* Account for top panel */
+  top: 32px !important;
+}
+
+.window-gnome .window-header {
+  height: 36px;
+  background: var(--os-window-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  cursor: move;
+  user-select: none;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.window-gnome .window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.gnome-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gnome-controls .window-control {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.gnome-controls .gnome-minimize:hover {
+  background: #f39c12;
+}
+
+.gnome-controls .gnome-maximize:hover {
+  background: #27ae60;
+}
+
+.gnome-controls .gnome-close:hover {
+  background: #e74c3c;
+}
+
+/* macOS Style */
+.window-macos {
+  background-color: var(--os-window);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.window-macos.maximized {
+  height: calc(100% - 28px) !important; /* Account for menu bar */
+  top: 28px !important;
+  border-radius: 0;
+}
+
+.window-macos .window-header {
+  height: 40px;
+  background: var(--os-window-header);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  cursor: move;
+  user-select: none;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.window-macos .window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.macos-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.macos-controls .window-control {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.macos-control-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.macos-close .macos-control-dot {
+  background: #ff5f57;
+}
+
+.macos-minimize .macos-control-dot {
+  background: #ffbd2e;
+}
+
+.macos-maximize .macos-control-dot {
+  background: #28ca42;
+}
+
+.macos-controls .window-control:hover .macos-control-dot {
+  filter: brightness(0.9);
+}
+
+/* Window Content */
 .window-content {
   height: calc(100% - 30px);
   overflow: auto;
   padding: 10px;
-  color: #000;
+  color: var(--os-text);
 }
 
-.dark .window-content {
+.window-gnome .window-content {
+  height: calc(100% - 36px);
+}
+
+.window-macos .window-content {
+  height: calc(100% - 40px);
+}
+
+/* Dark mode adjustments */
+.dark .window-macos .window-header {
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .window-macos .window-title {
   color: #fff;
 }
 
-/* Media queries for responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
   .window:not(.maximized) {
     width: 90% !important;
@@ -113,16 +260,47 @@
     top: 10% !important;
   }
   
-  .window-header {
+  .window-xp .window-header {
     height: 40px;
   }
   
-  .window-content {
+  .window-xp .window-content {
     height: calc(100% - 40px);
   }
   
-  .window-control {
+  .window-gnome .window-header {
+    height: 44px;
+  }
+  
+  .window-gnome .window-content {
+    height: calc(100% - 44px);
+  }
+  
+  .window-macos .window-header {
+    height: 48px;
+  }
+  
+  .window-macos .window-content {
+    height: calc(100% - 48px);
+  }
+  
+  .xp-controls .window-control {
     width: 26px;
     height: 26px;
+  }
+  
+  .gnome-controls .window-control {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .macos-controls .window-control {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .macos-control-dot {
+    width: 16px;
+    height: 16px;
   }
 }
